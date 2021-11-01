@@ -6,7 +6,7 @@ const geocode = (address, callback) => {
     encodeURIComponent(address) +
     ".json?access_token=pk.eyJ1Ijoic2hsb21hIiwiYSI6ImNrdXZxa2o4MDA4czcyb21yMHhlMzA4NWMifQ.3566K8bWMhEZu3lwVvcVBw&limit=1";
 
-  request({ url, json: true }, (error, { body }) => {
+  request({ url, json: true }, (error, { body } = {}) => {
     if (error) {
       callback("Unable to connect weather server!", undefined);
     } else if (body.features.length === 0) {

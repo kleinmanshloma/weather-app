@@ -1,6 +1,9 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const { argv } = require("process");
+const forecast = require("./utils/forecast");
+const geocode = require("./utils/geocode");
 
 const app = express();
 const port = process.env.PORT | 3000;
@@ -20,7 +23,7 @@ app.use(express.static(publickDirectoryPath));
 
 app.get("", (req, res) => {
   res.render("indax", {
-    title: "sk web developer Indax",
+    title: "sk web developer",
     me: "shloma kleinman!",
     footer: "shloma kleinman sk web dev",
   });
@@ -44,22 +47,35 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather-app", (req, res) => {
-  res.render("weather-app", {
-    forcaset: 47 + "degrees",
-    location: "antwerpen",
-    title: "sk web developer Weather",
-    me: "shloma kleinman",
-    footer: "shloma kleinman sk web dev",
-  });
+  if (!req.query.address) {
+    return res.send({ address: "Plaese provide a address!" });
+  }
+  geocode(
+    req.query.address,
+    (error, { latitude, longtitude, location } = {}) => {
+      if (error) {
+        return res.send({ error });
+      }
+      forecast(latitude, longtitude, (error, forecastData) => {
+        if (error) {
+          return res.send({ error });
+        }
+        res.send({
+          forcast: forecastData,
+          location: location,
+          address: req.query.address,
+        });
+      });
+    }
+  );
 });
 
-app.get("/weather-app/help", (req, res) => {
-  res.render("weather-app", {
-    forcaset: 47 + "degrees",
-    location: "antwerpen a new",
-    title: "sk web developer Weather",
-    me: "shloma kleinman",
-    footer: "shloma kleinman sk web dev",
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send("you must search");
+  }
+  res.send({
+    products: [],
   });
 });
 

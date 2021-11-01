@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <div class="content">
+      {{>header}}
     
-    {{>header}}
-    <img src="/img/skweb.png" alt="sk web developer" />
-    <h1>Copany name: {{title}}</h1>
-    <p>Owner: {{me}}</p>
+<form action="">
+  <input placeholder="Location" >
+  <button>search</button>
+  </input>
+ </form>
+
+ <p class="massageOne"></p>
+ <p class="massageTow"></p>
+    </div>
+    
     {{>footer}}
+
+    
+    <script src="\js\app.js"></script>
   </body>
 </html>

@@ -3,8 +3,11 @@ body {
   font-family: Arial;
   max-width: 650px;
   margin: 0, auto;
-  padding: 16px 0;
-  /* text-align: center; */
+  padding: 16px 48px 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+  background-color: rgb(235, 227, 227);
 }
 
 footer {
@@ -14,18 +17,44 @@ footer {
   padding: 16px 0;
 }
 
-header {
-  margin-top: 16px;
-  margin-bottom: 48px;
+.nav {
+  padding-top: 6.5px;
 }
+/* 
+header {
+  margin-top: 8px;
+  margin-bottom: 48px;
+} */
 
 h1 {
   font-size: 64px;
   margin-bottom: 16px;
 }
 
-header a {
+.nav a {
   color: #888;
   margin-right: 16px;
   text-decoration: none;
+  font-size: 36px;
+}
+
+.portrait {
+  width: 250px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+input {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #888;
+  background-color: #888;
+  color: white;
+  padding: 8px;
 }

@@ -30,7 +30,9 @@ h1 {
   font-size: 64px;
   margin-bottom: 16px;
 }
-
+.nav {
+  margin-left: 6rem;
+}
 .nav a {
   color: #888;
   margin-right: 16px;
@@ -40,12 +42,16 @@ h1 {
 
 .portrait {
   width: 250px;
+  margin-bottom: 2.5rem;
 }
 
 .content {
   flex-grow: 1;
 }
-
+.content {
+  padding-left: 50%;
+  margin-top: 6rem;
+}
 input {
   border: 1px solid #ccc;
   padding: 8px;

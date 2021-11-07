@@ -10,6 +10,7 @@ weatherForm.addEventListener("submit", (e) => {
   const location = search.value;
   massageOne.textContent = "Loading...";
   massageTow.textContent = "";
+  search.value = "";
   fetch("/weather-app?address=" + location).then((Response) => {
     Response.json().then((data) => {
       if (data.error) {
